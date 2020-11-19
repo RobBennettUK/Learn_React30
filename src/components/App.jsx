@@ -10,26 +10,35 @@ function App() {
   function handleChange(event) {
     const { name, value } = event.target;
 
-    setContact(prevValue => {
-      if (name === "fName") {
-        return {
-          fName: value,
-          lName: prevValue.lName,
-          email: prevValue.email
-        };
-      } else if (name === "lName") {
-        return {
-          fName: prevValue.fName,
-          lName: value,
-          email: prevValue.email
-        };
-      } else if (name === "email") {
-        return {
-          fName: prevValue.fName,
-          lName: prevValue.lName,
-          email: value
-        };
-      }
+    setContact((prevValue) => {
+      // if (name === "fName") {
+      //   return {
+      //     fName: value,
+      //     lName: prevValue.lName,
+      //     email: prevValue.email
+      //   };
+      // } else if (name === "lName") {
+      //   return {
+      //     fName: prevValue.fName,
+      //     lName: value,
+      //     email: prevValue.email
+      //   };
+      // } else if (name === "email") {
+      //   return {
+      //     fName: prevValue.fName,
+      //     lName: prevValue.lName,
+      //     email: value
+      //   };
+      // }
+
+      // Instead we could use this:
+      // https://stackoverflow.com/questions/11508463/javascript-set-object-key-by-variable?noredirect=1&lq=1
+      // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax
+
+      return {
+        ...prevValue,
+        [name]: value
+      };
     });
   }
 
